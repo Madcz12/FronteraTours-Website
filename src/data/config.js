@@ -11,9 +11,9 @@
 export const BUSINESS = {
   name: 'FronteraTours',
   slogan: 'Somos más que un transporte ejecutivo',
-  whatsapp: '+58XXXXXXXXXX',          // ← Replace with real number
-  phone: '+58XXXXXXXXXX',              // ← Replace with real number
-  email: 'contacto@fronteratours.com', // ← Replace with real email
+  whatsapp: '+584121013148',
+  phone: '+584121013148',
+  email: 'info@fronteratours.com',
   instagram: '#',
   facebook: '#',
   tiktok: '#',

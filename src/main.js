@@ -220,19 +220,20 @@ function renderFleet() {
   const specs = document.getElementById('fleetSpecs');
   if (!slides || !specs) return;
 
-  // Gallery placeholders (gradient cards since no real images yet)
-  const colors = [
-    ['#1A3C5E', '#2A5A8A'],
-    ['#0F2840', '#1A3C5E'],
-    ['#2A5A8A', '#3B7FBF'],
-    ['#1A3C5E', '#0F2840'],
+  const fleetImages = [
+    { src: '/img-exterior.jpg', label: 'Exterior' },
+    { src: '/tucsoninterior.jpg', label: 'Interior' },
+    { src: '/tucson-maletero.jpg', label: 'Maletero' },
+    { src: '/tucson.jpeg', label: 'Detalle' },
   ];
-  const labels = ['Exterior', 'Interior', 'Maletero', 'Detalle'];
 
-  slides.innerHTML = colors.map((c, i) => `
+  slides.innerHTML = fleetImages.map((img) => `
     <div class="swiper-slide">
-      <div style="width:100%;height:400px;background:linear-gradient(135deg,${c[0]},${c[1]});display:flex;align-items:center;justify-content:center;color:var(--color-accent);font-family:var(--font-heading);font-size:var(--fs-xl);font-weight:700;">
-        📸 ${labels[i]}
+      <div class="fleet__image-wrap">
+        <img src="${img.src}" alt="Hyundai Tucson - ${img.label}" class="fleet__img" style="width:100%; height:400px; object-fit:cover; border-radius:var(--radius-lg);" />
+        <div class="fleet__image-label" style="position:absolute; bottom:var(--space-md); right:var(--space-md); background:rgba(0,0,0,0.6); color:white; padding:var(--space-xs) var(--space-sm); border-radius:var(--radius-sm); font-size:var(--fs-xs);">
+          ${img.label}
+        </div>
       </div>
     </div>
   `).join('');
