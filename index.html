@@ -1,0 +1,501 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>FronteraTours — Somos más que un transporte ejecutivo</title>
+  <meta name="description" content="Servicio de transporte ejecutivo y encomiendas entre Puerto Ordaz y Santa Elena de Uairén / Pacaraima, Brasil. Reserva tu viaje por WhatsApp." />
+  <meta name="keywords" content="transporte ejecutivo, Puerto Ordaz, Santa Elena de Uairén, Pacaraima, encomiendas, Venezuela, Brasil" />
+  <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/lipis/flag-icons@7.3.2/css/flag-icons.min.css" />
+  
+  <!-- CSS Direct Links (Prevents FOUC in Vite) -->
+  <link rel="stylesheet" href="/src/styles/variables.css" />
+  <link rel="stylesheet" href="/src/styles/base.css" />
+  <link rel="stylesheet" href="/src/styles/components.css" />
+  <link rel="stylesheet" href="/src/styles/sections.css" />
+  <link rel="stylesheet" href="/src/styles/responsive.css" />
+
+  <style>
+    /* Prevent FOUC: Hide body until styles are loaded */
+    body { opacity: 0; }
+    .page-loaded body { opacity: 1; transition: opacity 0.4s ease-in; }
+    
+    /* Pre-sizing for critical elements */
+    .navbar__logo-img { width: 32px; height: 32px; }
+    .hero__logo-img { width: 160px; height: auto; }
+  </style>
+</head>
+<body class="loading">
+
+  <!-- ========== NAVBAR ========== -->
+  <nav class="navbar" id="navbar">
+    <div class="container navbar__inner">
+      <a href="#hero" class="navbar__logo">
+        <img src="/fronteratourslogo.png" alt="FronteraTours Logo" class="navbar__logo-img" width="32" height="32" />
+        <span class="navbar__logo-text">Frontera<em>Tours</em></span>
+      </a>
+
+      <div class="navbar__menu" id="navMenu">
+        <a href="#hero" class="navbar__link" data-i18n="nav.home">Inicio</a>
+        <a href="#services" class="navbar__link" data-i18n="nav.services">Servicios</a>
+        <a href="#packages" class="navbar__link" data-i18n="nav.packages">Paquetes</a>
+        <a href="#route" class="navbar__link" data-i18n="nav.route">Ruta</a>
+        <a href="#fleet" class="navbar__link" data-i18n="nav.fleet">Unidad</a>
+        <a href="#testimonials" class="navbar__link" data-i18n="nav.testimonials">Testimonios</a>
+        <a href="#faq" class="navbar__link" data-i18n="nav.faq">FAQ</a>
+        <a href="#contact" class="navbar__link" data-i18n="nav.contact">Contacto</a>
+
+        <div class="navbar__actions">
+          <div class="navbar__lang">
+            <button class="navbar__lang-btn active" data-lang="es">ES</button>
+            <button class="navbar__lang-btn" data-lang="pt">PT</button>
+          </div>
+          <a href="#" class="navbar__wa-btn" id="navWhatsapp" target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24" fill="currentColor" width="16" height="16"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+            <span data-i18n="nav.whatsapp">WhatsApp</span>
+          </a>
+        </div>
+      </div>
+
+      <button class="navbar__toggle" id="navToggle" aria-label="Abrir menú">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+    <div class="navbar__overlay" id="navOverlay"></div>
+  </nav>
+
+  <!-- ========== S1: HERO ========== -->
+  <section class="hero" id="hero">
+    <div class="hero__bg">
+      <div class="hero__particles" id="heroParticles"></div>
+    </div>
+    <div class="hero__content container">
+      <div class="hero__logo" data-aos="fade-down">
+        <img src="/fronteratourslogo.png" alt="FronteraTours Logo" class="hero__logo-img" width="160" height="160" />
+      </div>
+      <div class="hero__flag-bar" data-aos="fade-up">
+        <span class="fi fi-ve hero__flag"></span>
+        <span class="hero__flag-separator">🚐</span>
+        <span class="fi fi-br hero__flag"></span>
+      </div>
+      <h1 class="hero__slogan">
+        Somos <span>más que</span> un transporte ejecutivo
+      </h1>
+      <p class="hero__subtitle" data-i18n="hero.subtitle">
+        Servicio de transporte y encomiendas — Puerto Ordaz ↔ Santa Elena de Uairén / Pacaraima
+      </p>
+      <div class="hero__ctas">
+        <a href="#" class="btn btn--primary" id="heroBookBtn" data-i18n="hero.cta.book">Reservar Viaje</a>
+        <a href="#" class="btn btn--secondary" id="heroParcelBtn" data-i18n="hero.cta.parcel">Enviar Encomienda</a>
+      </div>
+      <div class="hero__badges">
+        <div class="hero__badge" data-aos="fade-up" data-aos-delay="100">
+          <span class="hero__badge-value" id="badgeYears">+12</span>
+          <span class="hero__badge-label" data-i18n="hero.badge.years">años operando</span>
+        </div>
+        <div class="hero__badge" data-aos="fade-up" data-aos-delay="200">
+          <span class="hero__badge-value" id="badgeTrips">+500</span>
+          <span class="hero__badge-label" data-i18n="hero.badge.trips">viajes realizados</span>
+        </div>
+        <div class="hero__badge" data-aos="fade-up" data-aos-delay="300">
+          <span class="hero__badge-value" id="badgeRating">4.9</span>
+          <span class="hero__badge-label" data-i18n="hero.badge.rating">calificación</span>
+        </div>
+      </div>
+    </div>
+    <div class="hero__scroll">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M19 12l-7 7-7-7"/></svg>
+    </div>
+  </section>
+
+  <!-- ========== S2: BOOKING BAR ========== -->
+  <section class="booking" id="booking">
+    <div class="container">
+      <h2 class="section__title booking__title" data-i18n="booking.title">Reserva Rápida</h2>
+      <form class="booking__form" id="bookingForm">
+        <div class="form-group">
+          <label class="form-label" data-i18n="booking.service">Tipo de servicio</label>
+          <select class="form-select" id="bookingService">
+            <option value="transport" data-i18n="booking.service.transport">Transporte de pasajeros</option>
+            <option value="parcel" data-i18n="booking.service.parcel">Encomienda</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label class="form-label" data-i18n="booking.origin">Origen</label>
+          <select class="form-select" id="bookingOrigin">
+            <option>Puerto Ordaz</option>
+            <option>Santa Elena de Uairén</option>
+            <option>Pacaraima</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label class="form-label" data-i18n="booking.destination">Destino</label>
+          <select class="form-select" id="bookingDest">
+            <option>Santa Elena de Uairén</option>
+            <option>Pacaraima</option>
+            <option>Puerto Ordaz</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label class="form-label" data-i18n="booking.date">Fecha de viaje</label>
+          <input type="date" class="form-input" id="bookingDate" />
+        </div>
+        <div class="form-group" id="bookingPassengersGroup">
+          <label class="form-label" data-i18n="booking.passengers">Pasajeros</label>
+          <select class="form-select" id="bookingPassengers">
+            <option>1</option><option>2</option><option>3</option><option>4</option><option>5</option>
+          </select>
+        </div>
+        <div class="form-group booking__submit">
+          <button type="submit" class="btn btn--whatsapp" data-i18n="booking.cta">
+            Consultar por WhatsApp
+          </button>
+        </div>
+      </form>
+    </div>
+  </section>
+
+  <!-- ========== S3: WHY US ========== -->
+  <section class="section section--alt" id="why-us">
+    <div class="container">
+      <div class="section__header">
+        <h2 class="section__title" data-i18n="why.title">¿Por qué elegirnos?</h2>
+        <p class="section__subtitle" data-i18n="why.subtitle">Viaja con la confianza y comodidad que mereces</p>
+      </div>
+      <div class="why-us__grid">
+        <div class="why-us__item" data-aos="fade-up" data-aos-delay="0">
+          <div class="why-us__icon">🚙</div>
+          <div class="why-us__text">
+            <h4 data-i18n="why.item1.title">Unidad Moderna</h4>
+            <p data-i18n="why.item1.desc">Hyundai Tucson equipada con todo lo necesario para tu comodidad</p>
+          </div>
+        </div>
+        <div class="why-us__item" data-aos="fade-up" data-aos-delay="100">
+          <div class="why-us__icon">📶</div>
+          <div class="why-us__text">
+            <h4 data-i18n="why.item2.title">WiFi a Bordo</h4>
+            <p data-i18n="why.item2.desc">Mantente conectado durante todo el viaje con internet inalámbrico</p>
+          </div>
+        </div>
+        <div class="why-us__item" data-aos="fade-up" data-aos-delay="200">
+          <div class="why-us__icon">🛡️</div>
+          <div class="why-us__text">
+            <h4 data-i18n="why.item3.title">Viaje Seguro</h4>
+            <p data-i18n="why.item3.desc">Tu seguridad es nuestra prioridad, con conductor experimentado</p>
+          </div>
+        </div>
+        <div class="why-us__item" data-aos="fade-up" data-aos-delay="300">
+          <div class="why-us__icon">⏰</div>
+          <div class="why-us__text">
+            <h4 data-i18n="why.item4.title">Puntualidad</h4>
+            <p data-i18n="why.item4.desc">Cumplimos con los horarios acordados, siempre a tiempo</p>
+          </div>
+        </div>
+        <div class="why-us__item" data-aos="fade-up" data-aos-delay="400">
+          <div class="why-us__icon">🤝</div>
+          <div class="why-us__text">
+            <h4 data-i18n="why.item5.title">Atención Personalizada</h4>
+            <p data-i18n="why.item5.desc">Experiencia de viaje a tu medida, con trato exclusivo</p>
+          </div>
+        </div>
+        <div class="why-us__item" data-aos="fade-up" data-aos-delay="500">
+          <div class="why-us__icon">📋</div>
+          <div class="why-us__text">
+            <h4 data-i18n="why.item6.title">Asesoría Migratoria</h4>
+            <p data-i18n="why.item6.desc">Información completa sobre trámites para cruzar la frontera</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== S4: SERVICES ========== -->
+  <section class="section" id="services">
+    <div class="container">
+      <div class="section__header">
+        <h2 class="section__title" data-i18n="services.title">Nuestros Servicios</h2>
+        <p class="section__subtitle" data-i18n="services.subtitle">Dos formas de conectar Venezuela con Brasil</p>
+      </div>
+      <div class="services__grid">
+        <div class="card card--accent-top service-card" data-aos="fade-up">
+          <div class="service-card__img-wrap">
+            <img src="/tucson.jpeg" alt="Hyundai Tucson - Transporte ejecutivo" class="service-card__img" />
+          </div>
+          <h3 data-i18n="services.transport.title">Transporte de Pasajeros</h3>
+          <p data-i18n="services.transport.desc">Traslado privado y exclusivo en Hyundai Tucson. WiFi, A/C, espacio para equipaje y atención personalizada incluidos.</p>
+          <a href="#packages" class="btn btn--primary" data-i18n="services.transport.cta">Ver Paquetes</a>
+        </div>
+        <div class="card card--accent-top service-card" data-aos="fade-up" data-aos-delay="150">
+          <div class="service-card__img-wrap">
+            <img src="/encomienda.jpg" alt="Servicio de encomiendas" class="service-card__img" />
+          </div>
+          <h3 data-i18n="services.parcel.title">Encomiendas</h3>
+          <p data-i18n="services.parcel.desc">Envío de paquetes, documentos y artículos personales entre Puerto Ordaz y la frontera. Entrega el mismo día.</p>
+          <a href="#parcel" class="btn btn--outline" data-i18n="services.parcel.cta">Solicitar Cotización</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== S5: PACKAGES ========== -->
+  <section class="section section--alt" id="packages">
+    <div class="container">
+      <div class="section__header">
+        <h2 class="section__title" data-i18n="packages.title">Paquetes de Viaje</h2>
+        <p class="section__subtitle" data-i18n="packages.subtitle">Elige el plan que mejor se adapte a tu viaje</p>
+      </div>
+      <div class="packages__grid" id="packagesGrid">
+        <!-- Rendered by JS -->
+      </div>
+      <!-- Amenities -->
+      <div style="max-width:700px;margin:var(--space-3xl) auto 0;text-align:center;" data-aos="fade-up">
+        <h3 data-i18n="packages.amenities" style="margin-bottom:var(--space-lg);">Amenidades incluidas</h3>
+        <div class="amenity-list" style="justify-content:center;">
+          <span class="amenity-tag"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="14" height="14"><path d="M5 12.55a11 11 0 0114.08 0M1.42 9a16 16 0 0121.16 0M8.53 16.11a6 6 0 016.95 0M12 20h.01"/></svg> <span data-i18n="packages.amenities.wifi">WiFi a bordo</span></span>
+          <span class="amenity-tag"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="14" height="14"><path d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707"/><circle cx="12" cy="12" r="4"/></svg> <span data-i18n="packages.amenities.ac">Aire acondicionado</span></span>
+          <span class="amenity-tag"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="14" height="14"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg> <span data-i18n="packages.amenities.stops">Paradas acordadas en ruta</span></span>
+          <span class="amenity-tag"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="14" height="14"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg> <span data-i18n="packages.amenities.attention">Atención personalizada</span></span>
+          <span class="amenity-tag"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="14" height="14"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><path d="M14 2v6h6M16 13H8m8 4H8m2-8H8"/></svg> <span data-i18n="packages.amenities.migration">Info de trámites migratorios</span></span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== S5b: PARCEL DETAIL ========== -->
+  <section class="section section--bg-parcel" id="parcel">
+    <div class="container">
+      <div class="section__header">
+        <h2 class="section__title section__title--light" data-i18n="parcel.title">Servicio de Encomiendas</h2>
+        <p class="section__subtitle section__subtitle--light" data-i18n="parcel.subtitle">Envía tus paquetes de forma segura entre Venezuela y Brasil</p>
+      </div>
+      <div class="step-flow">
+        <div class="step-card" data-aos="fade-up" data-aos-delay="0">
+          <div class="step-card__number">1</div>
+          <h4 class="step-card__title" data-i18n="parcel.step1.title">Contacta al operador</h4>
+          <p class="step-card__desc" data-i18n="parcel.step1.desc">Escríbenos por WhatsApp para coordinar tu envío</p>
+        </div>
+        <div class="step-card" data-aos="fade-up" data-aos-delay="100">
+          <div class="step-card__number">2</div>
+          <h4 class="step-card__title" data-i18n="parcel.step2.title">Empaca y etiqueta</h4>
+          <p class="step-card__desc" data-i18n="parcel.step2.desc">Prepara tu paquete con los datos del destinatario</p>
+        </div>
+        <div class="step-card" data-aos="fade-up" data-aos-delay="200">
+          <div class="step-card__number">3</div>
+          <h4 class="step-card__title" data-i18n="parcel.step3.title">Entrega en punto acordado</h4>
+          <p class="step-card__desc" data-i18n="parcel.step3.desc">Lleva tu encomienda al lugar convenido</p>
+        </div>
+        <div class="step-card" data-aos="fade-up" data-aos-delay="300">
+          <div class="step-card__number">4</div>
+          <h4 class="step-card__title" data-i18n="parcel.step4.title">Confirmación de entrega</h4>
+          <p class="step-card__desc" data-i18n="parcel.step4.desc">Recibe aviso por WhatsApp cuando sea entregado</p>
+        </div>
+      </div>
+      <div class="parcel__rules">
+        <div class="parcel__allowed" data-aos="fade-up">
+          <h4 data-i18n="parcel.allowed.title">✅ Artículos Permitidos</h4>
+          <p data-i18n="parcel.allowed.items">Documentos, paquetes pequeños y medianos, artículos personales, mercancía de comercio electrónico</p>
+        </div>
+        <div class="parcel__restricted" data-aos="fade-up" data-aos-delay="100">
+          <h4 data-i18n="parcel.restricted.title">🚫 Artículos Restringidos</h4>
+          <p data-i18n="parcel.restricted.items">Efectivo no declarado, sustancias ilegales, artículos de contrabando</p>
+        </div>
+      </div>
+      <div style="text-align:center;margin-top:var(--space-2xl);">
+        <a href="#" class="btn btn--whatsapp" id="parcelCtaBtn" data-i18n="parcel.cta">Cotizar por WhatsApp</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== S6: ROUTE ========== -->
+  <section class="section section--bg-route" id="route">
+    <div class="container">
+      <div class="section__header">
+        <h2 class="section__title section__title--light" data-i18n="route.title">Nuestra Ruta</h2>
+        <p class="section__subtitle section__subtitle--light" data-i18n="route.subtitle">Puerto Ordaz → Santa Elena de Uairén → Pacaraima (Brasil)</p>
+      </div>
+      <div class="route__content">
+        <div class="route__timeline" data-aos="fade-up" id="routeTimeline">
+          <!-- Rendered by JS -->
+        </div>
+        <div class="route__info-card" data-aos="fade-up" data-aos-delay="150">
+          <p style="font-size:var(--fs-sm);text-transform:uppercase;letter-spacing:1px;opacity:0.8;margin-bottom:var(--space-sm);" data-i18n="route.time">Tiempo estimado de viaje</p>
+          <div class="route__time-value" id="routeTime">8–10h</div>
+          <p style="opacity:0.7;font-size:var(--fs-sm);margin-top:var(--space-xl);">Puerto Ordaz ↔ Pacaraima (Brasil)</p>
+          <div style="margin-top:var(--space-xl);display:flex;justify-content:center;gap:var(--space-md);">
+            <span style="font-size:2rem;">🇻🇪</span>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="24" height="24" style="color:var(--color-accent);"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            <span style="font-size:2rem;">🇧🇷</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== S7: FLEET ========== -->
+  <section class="section" id="fleet">
+    <div class="container">
+      <div class="section__header">
+        <h2 class="section__title" data-i18n="fleet.title">Nuestra Unidad</h2>
+        <p class="section__subtitle" data-i18n="fleet.subtitle">Conoce la Hyundai Tucson en la que viajarás</p>
+      </div>
+      <div class="fleet__content">
+        <div class="fleet__gallery" data-aos="fade-up">
+          <div class="swiper" id="fleetSwiper">
+            <div class="swiper-wrapper" id="fleetSlides">
+              <!-- Rendered by JS -->
+            </div>
+            <div class="swiper-pagination"></div>
+            <div class="swiper-button-next"></div>
+            <div class="swiper-button-prev"></div>
+          </div>
+        </div>
+        <div data-aos="fade-up" data-aos-delay="150">
+          <h3 data-i18n="fleet.specs" style="margin-bottom:var(--space-xl);">Ficha Técnica</h3>
+          <ul class="fleet__specs" id="fleetSpecs">
+            <!-- Rendered by JS -->
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== S8: TESTIMONIALS ========== -->
+  <section class="section section--alt" id="testimonials">
+    <div class="container">
+      <div class="section__header">
+        <h2 class="section__title" data-i18n="testimonials.title">Lo que dicen nuestros clientes</h2>
+        <p class="section__subtitle" data-i18n="testimonials.subtitle">Experiencias reales de viajeros como tú</p>
+      </div>
+      <div class="testimonials__rating" data-aos="fade-up">
+        <div class="testimonials__rating-value" id="testimonialRating">4.9/5</div>
+        <div class="stars" style="justify-content:center;margin:var(--space-sm) 0;">
+          <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+        </div>
+        <p style="color:var(--color-text-light);font-size:var(--fs-sm);">
+          <span data-i18n="testimonials.based">basado en</span> <strong id="testimonialCount">200+</strong> <span data-i18n="testimonials.reviews">reseñas</span>
+        </p>
+      </div>
+      <div class="testimonials__carousel">
+        <div class="swiper" id="testimonialSwiper">
+          <div class="swiper-wrapper" id="testimonialSlides">
+            <!-- Rendered by JS -->
+          </div>
+          <div class="swiper-pagination"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== S9: FAQ ========== -->
+  <section class="section" id="faq">
+    <div class="container">
+      <div class="section__header">
+        <h2 class="section__title" data-i18n="faq.title">Preguntas Frecuentes</h2>
+        <p class="section__subtitle" data-i18n="faq.subtitle">¿Tienes dudas? Aquí respondemos las más comunes</p>
+      </div>
+      <div class="faq__content accordion" id="faqAccordion">
+        <!-- Rendered by JS -->
+      </div>
+      <div class="faq__cta">
+        <a href="#" class="btn btn--whatsapp" id="faqCtaBtn" data-i18n="faq.more">¿Más dudas? Escríbenos por WhatsApp</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== S10: CONTACT ========== -->
+  <section class="section section--alt" id="contact">
+    <div class="container">
+      <div class="section__header">
+        <h2 class="section__title" data-i18n="contact.title">Contáctanos</h2>
+        <p class="section__subtitle" data-i18n="contact.subtitle">Estamos listos para atenderte</p>
+      </div>
+      <div class="contact__grid">
+        <div class="contact__item" data-aos="fade-up">
+          <div class="contact__icon">📞</div>
+          <div>
+            <div class="contact__label" data-i18n="contact.phone">Teléfono</div>
+            <div class="contact__value" id="contactPhone">+58 XXX XXX XXXX</div>
+          </div>
+        </div>
+        <div class="contact__item" data-aos="fade-up" data-aos-delay="100">
+          <div class="contact__icon">✉️</div>
+          <div>
+            <div class="contact__label" data-i18n="contact.email">Correo Electrónico</div>
+            <div class="contact__value" id="contactEmail">contacto@fronteratours.com</div>
+          </div>
+        </div>
+        <div class="contact__item" data-aos="fade-up" data-aos-delay="200">
+          <div class="contact__icon">🕐</div>
+          <div>
+            <div class="contact__label" data-i18n="contact.hours">Horario de Atención</div>
+            <div class="contact__value" id="contactHours">Lunes a Domingo, 6:00 AM – 10:00 PM</div>
+          </div>
+        </div>
+      </div>
+      <div class="contact__payments" data-aos="fade-up">
+        <h4 data-i18n="contact.payment">Métodos de Pago</h4>
+        <div class="payment-methods" id="paymentMethods">
+          <!-- Rendered by JS -->
+        </div>
+      </div>
+      <div class="contact__cta" style="margin-top:var(--space-2xl);">
+        <a href="#" class="btn btn--whatsapp btn--lg" id="contactCtaBtn" data-i18n="contact.cta">Escribir por WhatsApp</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== FOOTER ========== -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer__inner">
+        <div class="footer__brand">
+          <h3>FronteraTours</h3>
+          <p data-i18n="footer.tagline">Servicio de transporte ejecutivo y encomiendas</p>
+          <p style="margin-top:var(--space-md);font-style:italic;color:var(--color-accent);font-size:var(--fs-sm);">
+            "Somos más que un transporte ejecutivo"
+          </p>
+        </div>
+        <div class="footer__links">
+          <h4>Links</h4>
+          <a href="#hero" data-i18n="nav.home">Inicio</a>
+          <a href="#services" data-i18n="nav.services">Servicios</a>
+          <a href="#packages" data-i18n="nav.packages">Paquetes</a>
+          <a href="#faq" data-i18n="nav.faq">FAQ</a>
+          <a href="#contact" data-i18n="nav.contact">Contacto</a>
+        </div>
+        <div class="footer__social">
+          <h4>Social</h4>
+          <div class="footer__social-links">
+            <a href="#" class="footer__social-link" aria-label="Instagram" target="_blank" rel="noopener">
+              <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
+            </a>
+            <a href="#" class="footer__social-link" aria-label="Facebook" target="_blank" rel="noopener">
+              <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+            </a>
+            <a href="#" class="footer__social-link" aria-label="TikTok" target="_blank" rel="noopener">
+              <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.63.41-1.11 1.04-1.36 1.75-.21.51-.15 1.07-.14 1.61.24 1.64 1.82 3.02 3.5 2.87 1.12-.01 2.19-.66 2.77-1.61.19-.33.4-.67.41-1.06.1-1.79.06-3.57.07-5.36.01-4.03-.01-8.05.02-12.07z"/></svg>
+            </a>
+          </div>
+        </div>
+      </div>
+      <div class="footer__bottom">
+        <p>© 2026 FronteraTours. <span data-i18n="footer.rights">Todos los derechos reservados.</span></p>
+      </div>
+    </div>
+  </footer>
+
+   <!-- ========== WHATSAPP FLOATING BUTTON ========== -->
+  <div class="whatsapp-float" id="whatsappFloat">
+    <a href="#" class="whatsapp-float__btn" id="whatsappFloatBtn" target="_blank" rel="noopener" aria-label="WhatsApp">
+      <svg viewBox="0 0 24 24" fill="currentColor" width="30" height="30"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+    </a>
+  </div>
+
+  <script type="module" src="/src/main.js"></script>
+</body>
+</html>

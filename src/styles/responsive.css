@@ -1,0 +1,224 @@
+/* ============================================================
+   FronteraTours — Responsive Styles
+   ============================================================ */
+
+/* ── Mobile Small (320px) ── */
+@media (max-width: 374px) {
+  :root {
+    --fs-4xl: 2rem;
+    --fs-3xl: 1.75rem;
+  }
+
+  .hero__slogan {
+    font-size: var(--fs-3xl);
+  }
+
+  .hero__badges {
+    gap: var(--space-lg);
+  }
+
+  .hero__badge-value {
+    font-size: var(--fs-2xl);
+  }
+}
+
+/* ── Mobile (up to 767px) ── */
+@media (max-width: 767px) {
+  :root {
+    --section-padding: 3rem 0;
+    --container-padding: 1rem;
+  }
+
+  /* Navbar mobile */
+  .navbar__toggle {
+    display: flex;
+  }
+
+  .navbar__menu {
+    position: fixed;
+    top: 0;
+    right: -100%;
+    width: 80%;
+    max-width: 320px;
+    height: 100vh;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0;
+    background: var(--color-primary-dark);
+    padding: calc(var(--navbar-height) + var(--space-xl)) var(--space-xl) var(--space-xl);
+    transition: right var(--transition-base);
+    box-shadow: -5px 0 30px rgba(0, 0, 0, 0.3);
+    overflow-y: auto;
+    z-index: var(--z-overlay);
+  }
+
+  .navbar__menu.is-open {
+    right: 0;
+  }
+
+  .navbar__link {
+    padding: var(--space-md) 0;
+    font-size: var(--fs-base);
+    width: 100%;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  }
+
+  .navbar__actions {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--space-lg);
+    margin-top: var(--space-xl);
+    width: 100%;
+  }
+
+  /* Mobile overlay */
+  .navbar__overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: calc(var(--z-overlay) - 1);
+  }
+
+  .navbar__overlay.is-open {
+    display: block;
+  }
+
+  /* Hero mobile */
+  .hero__slogan {
+    font-size: var(--fs-3xl);
+  }
+
+  .hero__ctas {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .hero__ctas .btn {
+    width: 100%;
+    max-width: 300px;
+  }
+
+  /* Booking mobile */
+  .booking__form {
+    grid-template-columns: 1fr;
+  }
+
+  /* Services mobile */
+  .services__grid {
+    grid-template-columns: 1fr;
+  }
+
+  /* Packages mobile */
+  .packages__grid {
+    grid-template-columns: 1fr;
+    max-width: 400px;
+    margin: 0 auto;
+  }
+
+  .package-card--featured {
+    transform: none;
+  }
+
+  .package-card--featured:hover {
+    transform: translateY(-4px);
+  }
+
+  /* Parcel rules */
+  .parcel__rules {
+    grid-template-columns: 1fr;
+  }
+
+  /* Fleet mobile */
+  .fleet__content {
+    grid-template-columns: 1fr;
+  }
+
+  .fleet__gallery .swiper-slide img {
+    height: 250px;
+  }
+
+  /* Contact mobile */
+  .contact__grid {
+    grid-template-columns: 1fr;
+  }
+
+  /* Footer mobile */
+  .footer__inner {
+    grid-template-columns: 1fr;
+    gap: var(--space-2xl);
+  }
+
+  /* Section headers mobile */
+  .section__title {
+    font-size: var(--fs-2xl);
+  }
+
+  /* Why us mobile */
+  .why-us__grid {
+    grid-template-columns: 1fr;
+  }
+
+  /* Route mobile */
+  .route__content {
+    grid-template-columns: 1fr;
+  }
+
+  /* WhatsApp button mobile */
+  .whatsapp-float {
+    bottom: 1.25rem;
+    right: 1.25rem;
+  }
+
+  .whatsapp-float__btn {
+    width: 52px;
+    height: 52px;
+  }
+
+  .whatsapp-float__btn svg {
+    width: 26px;
+    height: 26px;
+  }
+}
+
+/* ── Tablet (768px – 1023px) ── */
+@media (min-width: 768px) and (max-width: 1023px) {
+  .services__grid {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .packages__grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .fleet__content {
+    grid-template-columns: 1fr;
+  }
+
+  .footer__inner {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+/* ── Desktop (1024px+) ── */
+@media (min-width: 1024px) {
+  .hero__slogan {
+    font-size: var(--fs-5xl);
+  }
+
+  .route__content {
+    grid-template-columns: 1fr 1fr;
+    align-items: start;
+  }
+
+  .booking__form {
+    grid-template-columns: repeat(5, 1fr) auto;
+  }
+}
+
+/* ── Large Desktop (1280px+) ── */
+@media (min-width: 1280px) {
+  :root {
+    --container-padding: 2rem;
+  }
+}
