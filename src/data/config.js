@@ -19,6 +19,11 @@ export const BUSINESS = {
   tiktok: '#',
   hours: '6:00 AM – 10:00 PM',
   daysOpen: 'Lunes a Domingo',
+  paymentDetails: {
+    zelle: { email: 'XXXXXXXX@gmail.com', holder: 'XXXX XXXX' },
+    pagoMovil: { phone: '+58412XXXXXXX', id: 'V-XXXXXXXX', bank: 'Banco XXXX' },
+    brl: { pix: 'XXXXXXXX', holder: 'XXXX XXXX' }
+  }
 };
 
 export const ROUTE = {

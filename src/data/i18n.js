@@ -179,6 +179,10 @@ export const translations = {
   'testimonials.based': { es: 'basado en', pt: 'baseado em' },
   'testimonials.reviews': { es: 'reseñas', pt: 'avaliações' },
 
+  /* ──────── GALLERY ──────── */
+  'gallery.title': { es: 'Nuestras Experiencias', pt: 'Nossas Experiências' },
+  'gallery.subtitle': { es: 'Momentos reales de nuestros viajeros y operadores', pt: 'Momentos reais dos nossos viajantes e operadores' },
+
   /* ──────── TESTIMONIAL DATA ──────── */
   'testimonial.1.name': { es: 'Carlos M.', pt: 'Carlos M.' },
   'testimonial.1.text': {
@@ -295,4 +299,23 @@ export const translations = {
     es: 'Hola, quiero reservar el Paquete Grupo (3-5 personas) de FronteraTours.',
     pt: 'Olá, quero reservar o Pacote Grupo (3-5 pessoas) do FronteraTours.',
   },
+
+  /* ──────── CHECKOUT MODAL ──────── */
+  'checkout.title': { es: 'Finalizar Reserva', pt: 'Finalizar Reserva' },
+  'checkout.subtitle': { es: 'Completa tus datos para recibir instrucciones de pago', pt: 'Complete seus dados para receber instruções de pagamento' },
+  'checkout.field.name': { es: 'Nombre Completo', pt: 'Nome Completo' },
+  'checkout.field.id': { es: 'Cédula / Pasaporte', pt: 'Documento / Passaporte' },
+  'checkout.field.date': { es: 'Fecha de Viaje', pt: 'Data da Viagem' },
+  'checkout.payment.title': { es: 'Método de Pago', pt: 'Método de Pagamento' },
+  'checkout.payment.desc': { es: 'Selecciona cómo deseas pagar para ver los datos', pt: 'Selecione como deseja pagar para ver os dados' },
+  'checkout.summary.title': { es: 'Resumen de Reserva', pt: 'Resumo da Reserva' },
+  'checkout.summary.package': { es: 'Paquete', pt: 'Pacote' },
+  'checkout.summary.total': { es: 'Total a Pagar', pt: 'Total a Pagar' },
+  'checkout.cta': { es: 'Confirmar y Enviar Comprobante', pt: 'Confirmar e Enviar Comprovante' },
+  'checkout.close': { es: 'Cerrar', pt: 'Fechar' },
+  'checkout.payment.info': { es: 'Datos para el pago:', pt: 'Dados para o pagamento:' },
+  'checkout.wa.message': {
+    es: 'Hola, acabo de realizar una reserva desde la web:\n\n• *Paquete:* {package}\n• *Pasajero:* {name}\n• *ID:* {id}\n• *Fecha:* {date}\n• *Método de pago:* {method}\n\nAdjunto el comprobante de pago.',
+    pt: 'Olá, acabo de realizar uma reserva pelo site:\n\n• *Pacote:* {package}\n• *Passageiro:* {name}\n• *ID:* {id}\n• *Data:* {date}\n• *Método de pagamento:* {method}\n\nAnexo o comprovante de pagamento.'
+  }
 };

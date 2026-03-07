@@ -849,8 +849,39 @@
 }
 
 .testimonials__carousel {
-  max-width: 900px;
+  max-width: 800px;
   margin: 0 auto;
+}
+
+/* ───────────── GALLERY SECTION ───────────── */
+.section--gallery {
+  background-color: var(--color-gray-100);
+}
+
+.gallery__carousel {
+  max-width: 1000px;
+  margin: 0 auto;
+  border-radius: var(--radius-xl);
+  overflow: hidden;
+  box-shadow: var(--shadow-xl);
+}
+
+.gallery__carousel .swiper-slide img {
+  width: 100%;
+  height: 500px;
+  object-fit: cover;
+  border-radius: var(--radius-xl);
+}
+
+.gallery__carousel .swiper-button-next,
+.gallery__carousel .swiper-button-prev {
+  color: var(--color-white);
+  transition: all var(--transition-fast);
+}
+
+.gallery__carousel .swiper-button-next:hover,
+.gallery__carousel .swiper-button-prev:hover {
+  color: var(--color-accent);
 }
 
 

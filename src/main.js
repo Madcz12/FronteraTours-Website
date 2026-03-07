@@ -14,11 +14,8 @@
 /* ── Libraries ── */
 import AOS from 'aos';
 import 'aos/dist/aos.css';
-import Swiper from 'swiper';
-import { Navigation, Pagination, Autoplay } from 'swiper/modules';
-import 'swiper/css';
-import 'swiper/css/navigation';
-import 'swiper/css/pagination';
+import Swiper from 'swiper/bundle';
+import 'swiper/css/bundle';
 
 /* ── App Modules ── */
 import { initLanguage, getLang, t } from './js/language.js';
@@ -39,6 +36,7 @@ document.addEventListener('DOMContentLoaded', () => {
   renderFAQ();
   renderContact();
   initWhatsAppLinks();
+  initCheckout();
   initAOS();
 
   // Signal that the page is ready to be shown (prevents FOUC)
@@ -83,6 +81,16 @@ function initNavbar() {
       overlay.classList.remove('is-open');
       document.body.style.overflow = '';
     });
+  });
+
+  // Close on Escape key
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && menu.classList.contains('is-open')) {
+      toggle.classList.remove('is-open');
+      menu.classList.remove('is-open');
+      overlay.classList.remove('is-open');
+      document.body.style.overflow = '';
+    }
   });
 }
 
@@ -141,6 +149,127 @@ function initBookingForm() {
 }
 
 /* ============================================================
+   CHECKOUT MODAL LOGIC
+   ============================================================ */
+let activePackage = null;
+let selectedPaymentMethod = 'zelle';
+
+function initCheckout() {
+  const modal = document.getElementById('checkoutModal');
+  const closeBtn = document.getElementById('checkoutClose');
+  const overlay = document.getElementById('checkoutOverlay');
+  const form = document.getElementById('checkoutForm');
+  const paymentCards = document.querySelectorAll('.payment-card');
+
+  if (!modal) return;
+
+  // Close modal
+  const closeModal = () => {
+    modal.classList.remove('is-open');
+    document.body.style.overflow = '';
+  };
+
+  if (closeBtn) closeBtn.addEventListener('click', closeModal);
+  if (overlay) overlay.addEventListener('click', closeModal);
+
+  // Close on Escape key
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && modal.classList.contains('is-open')) {
+      closeModal();
+    }
+  });
+
+  // Payment Method Switch
+  paymentCards.forEach(card => {
+    card.addEventListener('click', () => {
+      paymentCards.forEach(c => c.classList.remove('active'));
+      card.classList.add('active');
+      selectedPaymentMethod = card.dataset.method;
+      renderPaymentDetails();
+    });
+  });
+
+  // Form Submit
+  form.addEventListener('submit', (e) => {
+    e.preventDefault();
+    if (!activePackage) return;
+
+    const name = document.getElementById('checkoutName').value;
+    const id = document.getElementById('checkoutID').value;
+    const date = document.getElementById('checkoutDate').value;
+    
+    // Create pre-filled WhatsApp message
+    const rawMsg = t('checkout.wa.message');
+    const msg = rawMsg
+      .replace('{package}', t(`packages.${activePackage.id}`))
+      .replace('{name}', name)
+      .replace('{id}', id)
+      .replace('{date}', date)
+      .replace('{method}', selectedPaymentMethod.toUpperCase());
+
+    openWhatsApp(msg);
+    closeModal();
+  });
+
+  renderPaymentDetails();
+}
+
+function openCheckout(pkgId) {
+  const pkg = PACKAGES.find(p => p.id === pkgId);
+  if (!pkg) return;
+
+  activePackage = pkg;
+  
+  // Update summary in modal
+  const summaryPkg = document.getElementById('summaryPackage');
+  const summaryPrice = document.getElementById('summaryPrice');
+  
+  if (summaryPkg) summaryPkg.textContent = t(`packages.${pkg.id}`);
+  if (summaryPrice) summaryPrice.textContent = `${pkg.currency} $${pkg.price}`;
+
+  const modal = document.getElementById('checkoutModal');
+  if (modal) {
+    modal.classList.add('is-open');
+    document.body.style.overflow = 'hidden';
+  }
+  
+  // Set today as min date
+  const dateInput = document.getElementById('checkoutDate');
+  if (dateInput) {
+    const today = new Date().toISOString().split('T')[0];
+    dateInput.setAttribute('min', today);
+  }
+}
+
+function renderPaymentDetails() {
+  const container = document.getElementById('paymentDetailsContent');
+  if (!container) return;
+
+  const details = BUSINESS.paymentDetails[selectedPaymentMethod];
+  
+  let html = '';
+  if (selectedPaymentMethod === 'zelle') {
+    html = `
+      <p><strong>Email:</strong> ${details.email}</p>
+      <p><strong>Titular:</strong> ${details.holder}</p>
+    `;
+  } else if (selectedPaymentMethod === 'pagoMovil') {
+    html = `
+      <p><strong>Banco:</strong> ${details.bank}</p>
+      <p><strong>Teléfono:</strong> ${details.phone}</p>
+      <p><strong>C.I.:</strong> ${details.id}</p>
+    `;
+  } else if (selectedPaymentMethod === 'brl') {
+    html = `
+      <p><strong>PIX (Chave):</strong> ${details.pix}</p>
+      <p><strong>Titular:</strong> ${details.holder}</p>
+    `;
+  }
+
+  container.innerHTML = html;
+}
+
+/* ============================================================
    RENDER PACKAGES
    ============================================================ */
 function renderPackages() {
@@ -179,17 +308,17 @@ function renderPackages() {
             <span>${pkg.luggage}</span>
           </span>
         </div>
-        <a href="#" class="btn btn--primary package-cta" data-package="${pkg.id}" style="width:100%;margin-top:var(--space-lg);" data-i18n="packages.cta">${t('packages.cta')}</a>
+        <button type="button" class="btn btn--primary package-cta" data-package="${pkg.id}" style="width:100%;margin-top:var(--space-lg);" data-i18n="packages.cta">${t('packages.cta')}</button>
       </div>
     `;
   }).join('');
 
-  // Bind CTA buttons
+  // Bind CTA buttons to Open Checkout instead of direct WhatsApp
   grid.querySelectorAll('.package-cta').forEach(btn => {
     btn.addEventListener('click', (e) => {
       e.preventDefault();
       const pkgId = btn.getAttribute('data-package');
-      openWhatsApp(t(`wa.package.${pkgId}`));
+      openCheckout(pkgId);
     });
   });
 }
@@ -260,7 +389,6 @@ function renderFleet() {
 
   // Init Swiper
   new Swiper('#fleetSwiper', {
-    modules: [Navigation, Pagination, Autoplay],
     loop: true,
     autoplay: { delay: 4000 },
     navigation: { nextEl: '.swiper-button-next', prevEl: '.swiper-button-prev' },
@@ -294,12 +422,38 @@ function renderTestimonials() {
   }).join('');
 
   new Swiper('#testimonialSwiper', {
-    modules: [Pagination, Autoplay],
     loop: true,
     autoplay: { delay: 5000 },
     pagination: { el: '#testimonialSwiper .swiper-pagination', clickable: true },
     spaceBetween: 30,
   });
+
+  // Image Gallery Carousel
+  const imageContainer = document.getElementById('testimonialImageSlides');
+  if (imageContainer) {
+    const images = [
+      'carrusel1.jpeg', 'carrusel2.jpeg', 'carrusel3.jpeg',
+      'carrusel4.jpeg', 'carrusel5.jpeg', 'carrusel6.jpeg'
+    ];
+
+    imageContainer.innerHTML = images.map(img => `
+      <div class="swiper-slide">
+        <img src="/${img}" alt="FronteraTours - Experiencia" loading="lazy" />
+      </div>
+    `).join('');
+
+    new Swiper('#testimonialImageSwiper', {
+      loop: true,
+      autoplay: { delay: 4500 },
+      pagination: { el: '#testimonialImageSwiper .swiper-pagination', clickable: true },
+      navigation: { nextEl: '#testimonialImageSwiper .swiper-button-next', prevEl: '#testimonialImageSwiper .swiper-button-prev' },
+      effect: 'fade',
+      fadeEffect: { crossFade: true },
+    });
+  }
+
+  // Refresh AOS after rendering dynamic content
+  if (typeof AOS !== 'undefined' && AOS.refresh) AOS.refresh();
 }
 
 /* ============================================================
