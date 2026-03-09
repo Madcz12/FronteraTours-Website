@@ -200,22 +200,22 @@ export const translations = {
   'gallery.subtitle': { es: 'Momentos reales de nuestros viajeros y operadores', pt: 'Momentos reais dos nossos viajantes e operadores' },
 
   /* ──────── TESTIMONIAL DATA ──────── */
-  'testimonial.1.name': { es: 'Carlos M.', pt: 'Carlos M.' },
+  'testimonial.1.name': { es: 'Miguel Diamond.', pt: 'Miguel Diamond.' },
   'testimonial.1.text': {
     es: 'Excelente servicio, muy puntual y el vehículo estaba impecable. Recomendado al 100%.',
     pt: 'Excelente serviço, muito pontual e o veículo estava impecável. Recomendado 100%.',
   },
-  'testimonial.2.name': { es: 'María L.', pt: 'María L.' },
+  'testimonial.2.name': { es: 'Williams Mota.', pt: 'Williams Mota.' },
   'testimonial.2.text': {
     es: 'Viajamos en familia y fue una experiencia increíble. WiFi, aire acondicionado, todo perfecto.',
     pt: 'Viajamos em família e foi uma experiência incrível. WiFi, ar condicionado, tudo perfeito.',
   },
-  'testimonial.3.name': { es: 'João P.', pt: 'João P.' },
+  'testimonial.3.name': { es: 'Jorge Lezama.', pt: 'Jorge Lezama.' },
   'testimonial.3.text': {
     es: 'Envié una encomienda a Pacaraima y llegó el mismo día. Comunicación excelente por WhatsApp.',
     pt: 'Enviei uma encomenda para Pacaraima e chegou no mesmo dia. Comunicação excelente pelo WhatsApp.',
   },
-  'testimonial.4.name': { es: 'Ana R.', pt: 'Ana R.' },
+  'testimonial.4.name': { es: 'Ana Rengifo.', pt: 'Ana Rengifo.' },
   'testimonial.4.text': {
     es: 'La mejor opción para cruzar la frontera. El conductor conoce todos los trámites migratorios.',
     pt: 'A melhor opção para cruzar a fronteira. O motorista conhece todos os trâmites migratórios.',
