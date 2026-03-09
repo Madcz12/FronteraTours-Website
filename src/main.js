@@ -37,6 +37,7 @@ document.addEventListener('DOMContentLoaded', () => {
   renderContact();
   initWhatsAppLinks();
   initCheckout();
+  initDetailsModal();
   initAOS();
 
   // Signal that the page is ready to be shown (prevents FOUC)
@@ -214,6 +215,38 @@ function initCheckout() {
   renderPaymentDetails();
 }
 
+function initDetailsModal() {
+  const modal = document.getElementById('advisoryModal');
+  const openBtn = document.getElementById('openAdvisoryModal');
+  const closeBtn = document.getElementById('advisoryClose');
+  const overlay = document.getElementById('advisoryOverlay');
+  const okBtn = document.getElementById('advisoryOk');
+
+  if (!modal || !openBtn) return;
+
+  const openModal = () => {
+    modal.classList.add('is-open');
+    document.body.style.overflow = 'hidden';
+  };
+
+  const closeModal = () => {
+    modal.classList.remove('is-open');
+    document.body.style.overflow = '';
+  };
+
+  openBtn.addEventListener('click', openModal);
+  if (closeBtn) closeBtn.addEventListener('click', closeModal);
+  if (overlay) overlay.addEventListener('click', closeModal);
+  if (okBtn) okBtn.addEventListener('click', closeModal);
+
+  // Close on Escape
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && modal.classList.contains('is-open')) {
+      closeModal();
+    }
+  });
+}
+
 function openCheckout(pkgId) {
   const pkg = PACKAGES.find(p => p.id === pkgId);
   if (!pkg) return;
@@ -346,46 +379,78 @@ function renderRoute() {
    ============================================================ */
 function renderFleet() {
   const slides = document.getElementById('fleetSlides');
-  const specs = document.getElementById('fleetSpecs');
-  if (!slides || !specs) return;
+  const specsTucson = document.getElementById('fleetSpecsTucson');
+  const specsTahoe = document.getElementById('fleetSpecsTahoe');
+  if (!slides) return;
 
-  const fleetImages = [
-    { src: '/img-exterior.jpg', label: 'Exterior' },
-    { src: '/tucsoninterior.jpg', label: 'Interior' },
-    { src: '/tucson-maletero.jpg', label: 'Maletero' },
-    { src: '/tucson.jpeg', label: 'Detalle' },
+  const fleetData = {
+    tucson: {
+      name: 'Hyundai Tucson',
+      images: [
+        { src: '/img-exterior.jpg', label: 'Exterior' },
+        { src: '/tucsoninterior.jpg', label: 'Interior' },
+        { src: '/tucson-maletero.jpg', label: 'Maletero' },
+        { src: '/tucson.jpeg', label: 'Detalle' },
+      ],
+      modelKey: 'fleet.tucson.model',
+      yearKey: 'fleet.tucson.year',
+      capacityKey: 'fleet.tucson.capacity',
+      featuresKey: 'fleet.tucson.features'
+    },
+    tahoe: {
+      name: 'Chevrolet Tahoe',
+      images: [
+        { src: '/tahoe1.jpeg', label: 'Exterior' },
+        { src: '/tahoe-interior.jpg', label: 'Interior' },
+        { src: '/tahoe2012-trunk.jpg', label: 'Maletero' },
+        { src: '/tahoe2.jpeg', label: 'Detalle' },
+      ],
+      modelKey: 'fleet.tahoe.model',
+      yearKey: 'fleet.tahoe.year',
+      capacityKey: 'fleet.tahoe.capacity',
+      featuresKey: 'fleet.tahoe.features'
+    }
+  };
+
+  // Combine all images
+  const allImages = [
+    ...fleetData.tucson.images.map(img => ({ ...img, vehicle: fleetData.tucson.name })),
+    ...fleetData.tahoe.images.map(img => ({ ...img, vehicle: fleetData.tahoe.name }))
   ];
 
-  slides.innerHTML = fleetImages.map((img) => `
+  slides.innerHTML = allImages.map((img) => `
     <div class="swiper-slide">
       <div class="fleet__image-wrap">
-        <img src="${img.src}" alt="Hyundai Tucson - ${img.label}" class="fleet__img" style="width:100%; height:400px; object-fit:cover; border-radius:var(--radius-lg);" />
+        <img src="${img.src}" alt="${img.vehicle} - ${img.label}" class="fleet__img" style="width:100%; height:500px; object-fit:cover; border-radius:var(--radius-lg);" />
         <div class="fleet__image-label" style="position:absolute; bottom:var(--space-md); right:var(--space-md); background:rgba(0,0,0,0.6); color:white; padding:var(--space-xs) var(--space-sm); border-radius:var(--radius-sm); font-size:var(--fs-xs);">
-          ${img.label}
+          ${img.vehicle} - ${img.label}
         </div>
       </div>
     </div>
   `).join('');
 
-  // Specs
-  specs.innerHTML = `
+  // Specs helper
+  const getSpecsHtml = (data) => `
     <li class="fleet__spec-item">
       <span class="fleet__spec-label" data-i18n="fleet.model">${t('fleet.model')}</span>
-      <span class="fleet__spec-value">${VEHICLE.name}</span>
+      <span class="fleet__spec-value">${t(data.modelKey)}</span>
     </li>
     <li class="fleet__spec-item">
       <span class="fleet__spec-label" data-i18n="fleet.year">${t('fleet.year')}</span>
-      <span class="fleet__spec-value">${VEHICLE.year}</span>
+      <span class="fleet__spec-value">${t(data.yearKey)}</span>
     </li>
     <li class="fleet__spec-item">
       <span class="fleet__spec-label" data-i18n="fleet.capacity">${t('fleet.capacity')}</span>
-      <span class="fleet__spec-value">${VEHICLE.capacity}</span>
+      <span class="fleet__spec-value">${t(data.capacityKey)}</span>
     </li>
     <li class="fleet__spec-item">
       <span class="fleet__spec-label" data-i18n="fleet.features">${t('fleet.features')}</span>
-      <span class="fleet__spec-value">${VEHICLE.features.join(', ')}</span>
+      <span class="fleet__spec-value">${t(data.featuresKey)}</span>
     </li>
   `;
+
+  if (specsTucson) specsTucson.innerHTML = getSpecsHtml(fleetData.tucson);
+  if (specsTahoe) specsTahoe.innerHTML = getSpecsHtml(fleetData.tahoe);
 
   // Init Swiper
   new Swiper('#fleetSwiper', {
@@ -393,6 +458,13 @@ function renderFleet() {
     autoplay: { delay: 4000 },
     navigation: { nextEl: '.swiper-button-next', prevEl: '.swiper-button-prev' },
     pagination: { el: '#fleetSwiper .swiper-pagination', clickable: true },
+    breakpoints: {
+      1024: {
+        slidesPerView: 1.2,
+        centeredSlides: true,
+        spaceBetween: 20
+      }
+    }
   });
 }
 

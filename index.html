@@ -215,7 +215,7 @@
     <div class="container">
       <div class="section__header">
         <h2 class="section__title" data-i18n="services.title">Nuestros Servicios</h2>
-        <p class="section__subtitle" data-i18n="services.subtitle">Dos formas de conectar Venezuela con Brasil</p>
+        <p class="section__subtitle" data-i18n="services.subtitle">Tres formas de conectar Venezuela con Brasil</p>
       </div>
       <div class="services__grid">
         <div class="card card--accent-top service-card" data-aos="fade-up">
@@ -233,6 +233,15 @@
           <h3 data-i18n="services.parcel.title">Encomiendas</h3>
           <p data-i18n="services.parcel.desc">Envío de paquetes, documentos y artículos personales entre Puerto Ordaz y la frontera. Entrega el mismo día.</p>
           <a href="#parcel" class="btn btn--outline" data-i18n="services.parcel.cta">Solicitar Cotización</a>
+        </div>
+        <!-- New Service: Asesoría en Frontera -->
+        <div class="card card--accent-top service-card" data-aos="fade-up" data-aos-delay="300">
+          <div class="service-card__img-wrap">
+            <img src="/carrusel6.jpeg" alt="Asesoría en Frontera" class="service-card__img" />
+          </div>
+          <h3 data-i18n="services.consulting.title">Asesoría en Frontera</h3>
+          <p data-i18n="services.consulting.desc">Te guiamos en cada paso de los trámites migratorios entre Venezuela y Brasil para un cruce seguro y sin contratiempos.</p>
+          <button type="button" class="btn btn--outline" id="openAdvisoryModal" data-i18n="services.consulting.cta" >Ver detalles</button>
         </div>
       </div>
     </div>
@@ -336,11 +345,13 @@
   <section class="section" id="fleet">
     <div class="container">
       <div class="section__header">
-        <h2 class="section__title" data-i18n="fleet.title">Nuestra Unidad</h2>
-        <p class="section__subtitle" data-i18n="fleet.subtitle">Conoce la Hyundai Tucson en la que viajarás</p>
+        <h2 class="section__title" data-i18n="fleet.title">Nuestras Unidades</h2>
+        <p class="section__subtitle" data-i18n="fleet.subtitle">Conoce los vehículos en los que viajarás</p>
       </div>
-      <div class="fleet__content">
-        <div class="fleet__gallery" data-aos="fade-up">
+
+      <div class="fleet__content fleet__content--unified">
+        <!-- Gallery Full Width Top -->
+        <div class="fleet__gallery fleet__gallery--full" data-aos="fade-up">
           <div class="swiper" id="fleetSwiper">
             <div class="swiper-wrapper" id="fleetSlides">
               <!-- Rendered by JS -->
@@ -350,11 +361,21 @@
             <div class="swiper-button-prev"></div>
           </div>
         </div>
-        <div data-aos="fade-up" data-aos-delay="150">
-          <h3 data-i18n="fleet.specs" style="margin-bottom:var(--space-xl);">Ficha Técnica</h3>
-          <ul class="fleet__specs" id="fleetSpecs">
-            <!-- Rendered by JS -->
-          </ul>
+        
+        <!-- Specs Dual Grid Bottom -->
+        <div class="fleet__specs-grid" data-aos="fade-up" data-aos-delay="150" id="fleetSpecsContainer">
+          <div class="fleet__specs-col">
+            <h3 class="fleet__vehicle-name">Hyundai Tucson</h3>
+            <ul class="fleet__specs" id="fleetSpecsTucson">
+              <!-- Rendered by JS -->
+            </ul>
+          </div>
+          <div class="fleet__specs-col">
+            <h3 class="fleet__vehicle-name">Chevrolet Tahoe</h3>
+            <ul class="fleet__specs" id="fleetSpecsTahoe">
+              <!-- Rendered by JS -->
+            </ul>
+          </div>
         </div>
       </div>
     </div>
@@ -588,6 +609,25 @@
             </button>
           </div>
         </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- ========== ADVISORY MODAL ========== -->
+  <div class="modal" id="advisoryModal">
+    <div class="modal__overlay" id="advisoryOverlay"></div>
+    <div class="modal__content">
+      <button class="modal__close" id="advisoryClose" aria-label="Cerrar modal">&times;</button>
+      <div style="padding: var(--space-2xl);">
+        <h2 class="section__title" style="color: var(--color-primary); margin-bottom: var(--space-md);">Trámites Migratorios</h2>
+        <div style="line-height: 1.8; color: var(--color-text);">
+          <p><strong>Para ciudadanos venezolanos:</strong> cédula de identidad vigente o pasaporte.</p>
+          <p><strong>Para brasileños:</strong> RG o pasaporte.</p>
+          <p style="margin-top: 1rem;">Se recomienda llevar carnet de vacunación y seguro de viaje. El operador te asesora sobre los trámites migratorios actualizados.</p>
+        </div>
+        <div style="margin-top: var(--space-xl); text-align: center;">
+          <button type="button" class="btn btn--primary" id="advisoryOk">Entendido</button>
+        </div>
       </div>
     </div>
   </div>

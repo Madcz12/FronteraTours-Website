@@ -10,7 +10,7 @@ export const translations = {
   'nav.services': { es: 'Servicios', pt: 'Serviços' },
   'nav.packages': { es: 'Paquetes', pt: 'Pacotes' },
   'nav.route': { es: 'Ruta', pt: 'Rota' },
-  'nav.fleet': { es: 'Unidad', pt: 'Veículo' },
+  'nav.fleet': { es: 'Unidades', pt: 'Veículos' },
   'nav.testimonials': { es: 'Testimonios', pt: 'Depoimentos' },
   'nav.faq': { es: 'FAQ', pt: 'FAQ' },
   'nav.contact': { es: 'Contacto', pt: 'Contato' },
@@ -83,8 +83,8 @@ export const translations = {
   /* ──────── SERVICES ──────── */
   'services.title': { es: 'Nuestros Servicios', pt: 'Nossos Serviços' },
   'services.subtitle': {
-    es: 'Dos formas de conectar Venezuela con Brasil',
-    pt: 'Duas formas de conectar Venezuela com o Brasil',
+    es: 'Tres formas de conectar Venezuela con Brasil',
+    pt: 'Três maneiras de conectar a Venezuela ao Brasil',
   },
   'services.transport.title': { es: 'Transporte de Pasajeros', pt: 'Transporte de Passageiros' },
   'services.transport.desc': {
@@ -94,10 +94,18 @@ export const translations = {
   'services.transport.cta': { es: 'Ver Paquetes', pt: 'Ver Pacotes' },
   'services.parcel.title': { es: 'Encomiendas', pt: 'Encomendas' },
   'services.parcel.desc': {
-    es: 'Envío de paquetes, documentos y artículos personales entre Puerto Ordaz y la frontera. Entrega el mismo día.',
-    pt: 'Envio de pacotes, documentos e artigos pessoais entre Puerto Ordaz e a fronteira. Entrega no mesmo dia.',
+    es: 'Envío de medicinas y paquetes pequeños',
+    pt: 'Envio de medicamentos e encomendas pequenas',
   },
   'services.parcel.cta': { es: 'Solicitar Cotización', pt: 'Solicitar Cotação' },
+
+   'services.consulting.title': { es: 'Asesoría en Frontera', pt: 'Consultoria de Fronteiras' },
+  'services.consulting.desc': {
+    es: 'Te asesoramos en cada paso del proceso migratorio entre Venezuela y Brasil para una travesía segura y tranquila.',
+    pt: 'Nós o orientamos em cada etapa do processo de imigração entre a Venezuela e o Brasil para uma travessia segura e tranquila.',
+  },
+  'services.consulting.cta': { es: 'Ver Detalles', pt: 'Ver Detalhes' },
+
 
   /* ──────── PACKAGES ──────── */
   'packages.title': { es: 'Paquetes de Viaje', pt: 'Pacotes de Viagem' },
@@ -158,16 +166,24 @@ export const translations = {
   'route.stops': { es: 'Paradas principales', pt: 'Paradas principais' },
 
   /* ──────── FLEET / VEHICLE ──────── */
-  'fleet.title': { es: 'Nuestra Unidad', pt: 'Nosso Veículo' },
+  'fleet.title': { es: 'Nuestras Unidades', pt: 'Nossos Veículos' },
   'fleet.subtitle': {
-    es: 'Conoce la Hyundai Tucson en la que viajarás',
-    pt: 'Conheça a Hyundai Tucson na qual você viajará',
+    es: 'Conoce los vehículos en los que viajarás',
+    pt: 'Conheça os veículos em que você viajará',
   },
   'fleet.specs': { es: 'Ficha Técnica', pt: 'Ficha Técnica' },
   'fleet.model': { es: 'Modelo', pt: 'Modelo' },
   'fleet.year': { es: 'Año', pt: 'Ano' },
   'fleet.capacity': { es: 'Capacidad', pt: 'Capacidade' },
   'fleet.features': { es: 'Equipamiento', pt: 'Equipamento' },
+  'fleet.tahoe.model': { es: 'Chevrolet Tahoe', pt: 'Chevrolet Tahoe' },
+  'fleet.tahoe.year': { es: '2012', pt: '2012' },
+  'fleet.tahoe.capacity': { es: '6 Pasajeros + Equipaje', pt: '6 Passageiros + Bagagem' },
+  'fleet.tahoe.features': { es: 'Cuero, A/C Dual, Estribos Eléctricos, Sonido Premium', pt: 'Couro, A/C Dual, Estribos Elétricos, Som Premium' },
+  'fleet.tucson.model': { es: 'Hyundai Tucson', pt: 'Hyundai Tucson' },
+  'fleet.tucson.year': { es: '2008', pt: '2008' },
+  'fleet.tucson.capacity': { es: '4 Pasajeros + Equipaje', pt: '4 Passageiros + Bagagem' },
+  'fleet.tucson.features': { es: 'WiFi, A/C, Asientos Reclinables', pt: 'WiFi, A/C, Assentos Reclináveis' },
 
   /* ──────── TESTIMONIALS ──────── */
   'testimonials.title': { es: 'Lo que dicen nuestros clientes', pt: 'O que dizem nossos clientes' },
