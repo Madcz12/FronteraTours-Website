@@ -350,10 +350,10 @@ function renderFleet() {
   if (!slides || !specs) return;
 
   const fleetImages = [
-    { src: '/img-exterior.jpg', label: 'Exterior' },
+    /* { src: '/img-exterior.jpg', label: 'Exterior' },
     { src: '/tucsoninterior.jpg', label: 'Interior' },
     { src: '/tucson-maletero.jpg', label: 'Maletero' },
-    { src: '/tucson.jpeg', label: 'Detalle' },
+    { src: '/tucson.jpeg', label: 'Detalle' }, */
   ];
 
   slides.innerHTML = fleetImages.map((img) => `
@@ -432,8 +432,8 @@ function renderTestimonials() {
   const imageContainer = document.getElementById('testimonialImageSlides');
   if (imageContainer) {
     const images = [
-      'carrusel1.jpeg', 'carrusel2.jpeg', 'carrusel3.jpeg',
-      'carrusel4.jpeg', 'carrusel5.jpeg', 'carrusel6.jpeg'
+      /* 'carrusel1.jpeg', 'carrusel2.jpeg', 'carrusel3.jpeg',
+      'carrusel4.jpeg', 'carrusel5.jpeg', 'carrusel6.jpeg' */
     ];
 
     imageContainer.innerHTML = images.map(img => `
