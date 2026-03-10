@@ -22,8 +22,8 @@ export const translations = {
     pt: 'Somos mais do que um transporte executivo',
   },
   'hero.subtitle': {
-    es: 'Servicio de transporte y encomiendas — Puerto Ordaz ↔ Santa Elena de Uairén / Pacaraima',
-    pt: 'Serviço de transporte e encomendas — Puerto Ordaz ↔ Santa Elena de Uairén / Pacaraima',
+    es: 'Servicio de transporte y encomiendas — Puerto Ordaz ↔ Frontera con Brasil',
+    pt: 'Serviço de transporte e encomendas — Puerto Ordaz ↔ Fronteira com Brasil',
   },
   'hero.cta.book': { es: 'Reservar Viaje', pt: 'Reservar Viagem' },
   'hero.cta.parcel': { es: 'Enviar Encomienda', pt: 'Enviar Encomenda' },
@@ -49,10 +49,10 @@ export const translations = {
     es: 'Viaja con la confianza y comodidad que mereces',
     pt: 'Viaje com a confiança e conforto que você merece',
   },
-  'why.item1.title': { es: 'Unidad Moderna', pt: 'Veículo Moderno' },
+  'why.item1.title': { es: 'Unidades Modernas', pt: 'Veículos Modernos' },
   'why.item1.desc': {
-    es: 'Hyundai Tucson equipada con todo lo necesario para tu comodidad',
-    pt: 'Hyundai Tucson equipada com tudo que você precisa para seu conforto',
+    es: 'equipada con todo lo necesario para tu comodidad',
+    pt: 'equipadas com tudo que você precisa para seu conforto',
   },
   'why.item2.title': { es: 'WiFi a Bordo', pt: 'WiFi a Bordo' },
   'why.item2.desc': {
@@ -159,8 +159,8 @@ export const translations = {
   /* ──────── ROUTE ──────── */
   'route.title': { es: 'Nuestra Ruta', pt: 'Nossa Rota' },
   'route.subtitle': {
-    es: 'Puerto Ordaz → Santa Elena de Uairén → Pacaraima (Brasil)',
-    pt: 'Puerto Ordaz → Santa Elena de Uairén → Pacaraima (Brasil)',
+    es: 'Puerto Ordaz → Frontera (Brasil)',
+    pt: 'Puerto Ordaz → Fronteira (Brasil)',
   },
   'route.time': { es: 'Tiempo estimado de viaje', pt: 'Tempo estimado de viagem' },
   'route.stops': { es: 'Paradas principales', pt: 'Paradas principais' },

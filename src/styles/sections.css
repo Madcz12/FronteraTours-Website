@@ -298,6 +298,7 @@
 
 .hero__subtitle {
   font-size: var(--fs-md);
+  font-weight: bold;
   opacity: 0.9;
   margin-bottom: var(--space-2xl);
   line-height: 1.5;
